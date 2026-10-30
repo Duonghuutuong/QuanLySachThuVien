@@ -5,9 +5,9 @@ public class QuanLySachThuVien {
         // Khởi tạo đối tượng Scanner để nhập dữ liệu
         Scanner sc = new Scanner(System.in);
 
-        // ==========================================
+
         // BÀI 1: Nhập thông tin sách và hiển thị lại
-        // ==========================================
+
         System.out.println("=== NHẬP THÔNG TIN SÁCH ===");
 
         System.out.print("Nhập mã sách: ");
@@ -37,9 +37,9 @@ public class QuanLySachThuVien {
         System.out.printf("Đơn giá      : %,.0f VNĐ\n", donGia);
         System.out.printf("Số lượng     : %d cuốn\n", soLuong);
 
-        // ==========================================
+
         // BÀI 2, 3, 4: Tính toán giá trị nhập kho
-        // ==========================================
+
 
         // Bài 2: Tính thành tiền = đơn giá * số lượng
         double thanhTien = donGia * soLuong;
