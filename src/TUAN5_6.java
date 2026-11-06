@@ -40,11 +40,16 @@ public class TUAN5_6 {
             System.out.println("8. Thoát");
             System.out.print("Vui lòng chọn chức năng (1-8): ");
 
-            try {
-                chon = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
+            System.out.print("Vui lòng chọn chức năng (1-8): ");
+
+            // Kiểm tra xem dữ liệu người dùng nhập vào có phải là số nguyên không
+            if (scanner.hasNextInt()) {
+                chon = scanner.nextInt();
+                scanner.nextLine(); // Dòng này rất quan trọng: Dùng để dọn dẹp ký tự 'Enter' thừa, chống trôi lệnh
+            } else {
                 System.out.println("Vui lòng nhập một số hợp lệ!");
-                continue;
+                scanner.nextLine(); // Bỏ qua phần dữ liệu bị nhập sai (chữ/ký tự)
+                continue; // Quay lại đầu menu
             }
 
             switch (chon) {
