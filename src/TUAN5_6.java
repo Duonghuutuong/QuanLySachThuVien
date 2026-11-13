@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Lớp đại diện cho đối tượng Sách
-class Sach {
+class Sachtuan5_6 {
     String maSach;
     String tenSach;
     int soLuong;
     double giaTri;
 
-    public Sach(String maSach, String tenSach, int soLuong, double giaTri) {
+    public Sachtuan5_6(String maSach, String tenSach, int soLuong, double giaTri) {
         this.maSach = maSach;
         this.tenSach = tenSach;
         this.soLuong = soLuong;
@@ -27,7 +27,7 @@ public class TUAN5_6 {
         Scanner scanner = new Scanner(System.in);
 
         // Khai báo ArrayList thay cho mảng để quản lý dữ liệu linh hoạt hơn
-        ArrayList<Sach> danhSach = new ArrayList<>();
+        ArrayList<Sachtuan5_6> danhSachtuan5_6 = new ArrayList<>();
         int chon = -1;
 
         do {
@@ -67,16 +67,16 @@ public class TUAN5_6 {
                     double gia = Double.parseDouble(scanner.nextLine());
 
                     // Thêm phần tử mới vào danh sách bằng phương thức add()
-                    danhSach.add(new Sach(ma, ten, sl, gia));
+                    danhSachtuan5_6.add(new Sachtuan5_6(ma, ten, sl, gia));
                     System.out.println("=> Thêm sách thành công!");
                     break;
 
                 case 2: // Hiển thị sách
                     System.out.println("\n--- DANH SÁCH THƯ VIỆN ---");
-                    if (danhSach.isEmpty()) {
+                    if (danhSachtuan5_6.isEmpty()) {
                         System.out.println("Danh sách hiện đang trống!");
                     } else {
-                        for (Sach s : danhSach) {
+                        for (Sachtuan5_6 s : danhSachtuan5_6) {
                             s.hienThi();
                         }
                     }
@@ -86,7 +86,7 @@ public class TUAN5_6 {
                     System.out.print("\nNhập mã sách cần tìm: ");
                     String maTim = scanner.nextLine();
                     boolean timThay = false;
-                    for (Sach s : danhSach) {
+                    for (Sachtuan5_6 s : danhSachtuan5_6) {
                         if (s.maSach.equalsIgnoreCase(maTim)) {
                             System.out.println("=> Đã tìm thấy:");
                             s.hienThi();
@@ -105,9 +105,9 @@ public class TUAN5_6 {
                     boolean daXoa = false;
 
                     // Duyệt ArrayList bằng chỉ số (index) để sử dụng phương thức remove(index)
-                    for (int i = 0; i < danhSach.size(); i++) {
-                        if (danhSach.get(i).maSach.equalsIgnoreCase(maXoa)) {
-                            danhSach.remove(i);
+                    for (int i = 0; i < danhSachtuan5_6.size(); i++) {
+                        if (danhSachtuan5_6.get(i).maSach.equalsIgnoreCase(maXoa)) {
+                            danhSachtuan5_6.remove(i);
                             System.out.println("=> Đã xóa sách thành công!");
                             daXoa = true;
                             break;
@@ -122,7 +122,7 @@ public class TUAN5_6 {
                     System.out.print("\nNhập mã sách cần sửa: ");
                     String maSua = scanner.nextLine();
                     boolean daSua = false;
-                    for (Sach s : danhSach) {
+                    for (Sachtuan5_6 s : danhSachtuan5_6) {
                         if (s.maSach.equalsIgnoreCase(maSua)) {
                             System.out.println("Nhập thông tin mới:");
                             System.out.print("Tên sách mới: ");
@@ -144,7 +144,7 @@ public class TUAN5_6 {
 
                 case 6: // Tính tổng số lượng
                     int tongSL = 0;
-                    for (Sach s : danhSach) {
+                    for (Sachtuan5_6 s : danhSachtuan5_6) {
                         tongSL += s.soLuong;
                     }
                     System.out.println("\n=> Tổng số lượng sách trong thư viện: " + tongSL);
@@ -152,7 +152,7 @@ public class TUAN5_6 {
 
                 case 7: // Tính tổng giá trị
                     double tongGia = 0;
-                    for (Sach s : danhSach) {
+                    for (Sachtuan5_6 s : danhSachtuan5_6) {
                         tongGia += (s.soLuong * s.giaTri);
                     }
                     System.out.println("\n=> Tổng giá trị sách trong thư viện: " + tongGia);
