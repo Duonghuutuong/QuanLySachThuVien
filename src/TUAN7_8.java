@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 
 class Sach {
-    public String maSach;
-    public String tieuDe;
-    public String tacGia;
-    public int namXuatBan;
-    public int soLuong;
+    // Yeu cau 1 (Tuan 8): Tat ca thuoc tinh khai bao private
+    private String maSach;
+    private String tieuDe;
+    private String tacGia;
+    private int namXuatBan;
+    private int soLuong;
 
+    // Yeu cau 2 & 3 (Tuan 8): Public Getters va Setters co kiem tra dieu kien
     public String getMaSach() {
         return maSach;
     }
@@ -29,28 +31,48 @@ class Sach {
         return namXuatBan;
     }
     public void setNamXuatBan(int namXuatBan) {
-        this.namXuatBan = namXuatBan;
+        int currentYear = 2026;
+        if (namXuatBan > 0 && namXuatBan <= currentYear) {
+            this.namXuatBan = namXuatBan;
+        } else {
+            System.out.println("Loi: Nam xuat ban khong hop le!");
+        }
     }
     public int getSoLuong() {
         return soLuong;
     }
     public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+        if (soLuong >= 0) {
+            this.soLuong = soLuong;
+        } else {
+            System.out.println("Loi: So luong khong duoc am!");
+        }
     }
 
+    // Constructor mac dinh
     public Sach() {
 
     }
 
+    // Yeu cau 4 (Tuan 8): Constructor co tham so day du
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
         this.tacGia = tacGia;
-        this.namXuatBan = namXuatBan;
-        this.soLuong = soLuong;
+        this.setNamXuatBan(namXuatBan);
+        this.setSoLuong(soLuong);
     }
 
-    // Yeu cau 2: Phuong thuc hien thi thong tin chi tiet cua cuon sach
+    // Constructor sao chep
+    public Sach(Sach s) {
+        this.maSach = s.maSach;
+        this.tieuDe = s.tieuDe;
+        this.tacGia = s.tacGia;
+        this.namXuatBan = s.namXuatBan;
+        this.soLuong = s.soLuong;
+    }
+
+    // Yeu cau 2 (Tuan 7): Phuong thuc hien thi thong tin chi tiet
     public void hienThiThongTin() {
         System.out.println("Ma sach: " + this.maSach);
         System.out.println("Tieu de: " + this.tieuDe);
@@ -61,45 +83,41 @@ class Sach {
     }
 }//end class Sach
 
-// Yeu cau 3: Xay dung lop Test
 public class TUAN7_8 {
 
     public static void main(String[] args) {
-        // Yeu cau 3: Tao cac doi tuong tu lop Sach
-        Sach s1 = new Sach("S01", "Lap trinh Java", "Nguyen Van A", 2023, 10);
-        Sach s2 = new Sach("S02", "Cau truc du lieu", "Tran Thi B", 2022, 15);
+        // TODO Auto-generated method stub
 
-        Sach s3 = new Sach();
+        // Khoi tao doi tuong bang Constructor co tham so
+        Sach s1 = new Sach("S01", "Lap trinh Java", "Nguyen Van A", 2024, 10);
+        Sach s2 = new Sach("S02", "Cau truc du lieu", "Tran Thi B", 2023, 15);
+
+        // Khoi tao bang Constructor sao chep
+        Sach s3 = new Sach(s2);
         s3.setMaSach("S03");
-        s3.setTieuDe("Co so du lieu");
-        s3.setTacGia("Le Van C");
-        s3.setNamXuatBan(2024);
-        s3.setSoLuong(20);
 
-        // Yeu cau 4: Tao va quan ly danh sach Sach bang ArrayList
-        ArrayList<Sach> danhSachSach = new ArrayList<Sach>();
+        // Khoi tao bang Constructor mac dinh va dung Setter (kiem thu tinh dong goi Tuan 8)
+        Sach s4 = new Sach();
+        s4.setMaSach("S04");
+        s4.setTieuDe("Co so du lieu");
+        s4.setTacGia("Le Van C");
+        s4.setNamXuatBan(2025); // Hop le
+        s4.setSoLuong(20);      // Hop le
 
-        // 1. Them sach vao danh sach
-        danhSachSach.add(s1);
-        danhSachSach.add(s2);
-        danhSachSach.add(s3);
+        // Thu truyen gia tri sai de kiem tra rang buoc o Yeu cau 3 (Tuan 8)
+        s4.setNamXuatBan(2030); // Se bao loi vi lon hon nam hien tai
+        s4.setSoLuong(-5);      // Se bao loi vi so luong am
 
-        // 2. Hien thi toan bo danh sach sach trong thu vien
+        // Quan ly danh sach Sach bang ArrayList (Yeu cau 4 - Tuan 7)
+        ArrayList<Sach> dsSach = new ArrayList<Sach>();
+        dsSach.add(s1);
+        dsSach.add(s2);
+        dsSach.add(s3);
+        dsSach.add(s4);
+
         System.out.println("=== DANH SACH SACH TRONG THU VIEN ===");
-        for (int i = 0; i < danhSachSach.size(); i++) {
-            danhSachSach.get(i).hienThiThongTin();
-        }
-
-        // 3. Cap nhat thong tin sach trong danh sach (vi du: sua so luong cuon sach dau tien)
-        danhSachSach.get(0).setSoLuong(25);
-
-        // 4. Xoa mot cuon sach khoi danh sach (vi du: xoa cuon sach thu 2)
-        danhSachSach.remove(1);
-
-        // Hien thi lai danh sach sau khi cap nhat va xoa
-        System.out.println("=== DANH SACH SACH SAU KHI CAP NHAT ===");
-        for (int i = 0; i < danhSachSach.size(); i++) {
-            danhSachSach.get(i).hienThiThongTin();
+        for (int i = 0; i < dsSach.size(); i++) {
+            dsSach.get(i).hienThiThongTin();
         }
     }
-}//end class Test
+}//end class TUAN7_8
